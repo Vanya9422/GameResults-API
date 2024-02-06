@@ -21,6 +21,6 @@ class MemberRepository extends BaseRepository implements MemberRepositoryInterfa
      * @return Member Найденный или созданный экземпляр модели Member.
      */
     public function findByEmailOrCreate(string $email): Member {
-      return $this->getModel()->firstOrCreate(['email' => $email]);
+      return $this->model->firstOrCreate(['email' => $email]);
     }
 }

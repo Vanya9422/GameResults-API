@@ -6,6 +6,7 @@ use App\Http\Responses\ResponseBuilder;
 use App\Service\ResultService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class TopListController {
 
@@ -36,7 +37,7 @@ class TopListController {
 
             return ResponseBuilder::success($response);
         } catch (\Exception $e) {
-            \Log::error('Error fetching top results: ' . $e->getMessage());
+            Log::error('Error fetching top results: ' . $e->getMessage());
 
             return ResponseBuilder::serverError('An error occurred while fetching the top results.');
         }

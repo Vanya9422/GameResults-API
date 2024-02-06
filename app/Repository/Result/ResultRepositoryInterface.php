@@ -3,8 +3,12 @@
 namespace App\Repository\Result;
 
 use App\Models\Result;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 
+/**
+ * @method Model create(array $attributes)
+ */
 interface ResultRepositoryInterface {
 
     /**

@@ -12,7 +12,7 @@ interface RepositoryCriteriaContract {
      * Добавляет критерий в репозиторий.
      *
      * @param CriteriaContract $criteria Критерий для добавления.
-     * @return mixed
+     * @return static
      */
     public function pushCriteria(CriteriaContract $criteria): static;
 
@@ -20,7 +20,7 @@ interface RepositoryCriteriaContract {
      * Добавляет критерий в коллекцию и сразу же применяет его к запросу
      *
      * @param CriteriaContract $criteria Критерий для добавления.
-     * @return mixed
+     * @return static
      */
     public function pushCriteriaWithApply(CriteriaContract $criteria): static;
 }

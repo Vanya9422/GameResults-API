@@ -23,10 +23,7 @@ abstract class BaseRepository implements RepositoryInterface, RepositoryCriteria
      */
     protected Application $app;
 
-    /**
-     * @var ?Builder|Model Экземпляр модели, с которой работает репозиторий.
-     */
-    protected Model|Builder|null $model;
+    protected $model;
 
     /**
      * @var Collection Коллекция объектов критериев, которые могут быть применены к запросу.
@@ -173,6 +170,6 @@ abstract class BaseRepository implements RepositoryInterface, RepositoryCriteria
      * @param array $attributes Атрибуты для создания результата.
      */
     public function create(array $attributes): Model {
-        return $this->getModel()->create($attributes);
+        return $this->startQuery()->create($attributes);
     }
 }

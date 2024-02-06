@@ -1,0 +1,5 @@
+parameters:
+    paths:
+        - app
+    excludes_analyse:
+        - */migrations/*

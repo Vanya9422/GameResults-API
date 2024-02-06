@@ -7,6 +7,7 @@ use App\Http\Resources\Result\ResultResource;
 use App\Http\Responses\ResponseBuilder;
 use App\Service\ResultService;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Log;
 
 class StoreController {
 
@@ -34,7 +35,7 @@ class StoreController {
             return new ResultResource($result);
         } catch (\Exception $e) {
             // Логирование исключения
-            \Log::error('Error storing result: ' . $e->getMessage());
+            Log::error('Error storing result: ' . $e->getMessage());
 
             // Возвращение ответа с сообщением об ошибке
             return ResponseBuilder::serverError('Error occurred while storing the result.');

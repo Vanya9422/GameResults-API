@@ -2,10 +2,11 @@
 
 namespace App\Service;
 
-use App\Models\Result;
 use App\Repository\Member\MemberRepositoryInterface;
 use App\Repository\Result\ResultRepositoryInterface;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Log;
 
 class ResultService {
 
@@ -23,9 +24,10 @@ class ResultService {
      *
      * @param string|null $email Email участника, если предоставлен.
      * @param int $milliseconds Время прохождения игры в миллисекундах.
-     * @return mixed Результат операции сохранения.
+     * @return Model Результат операции сохранения.
      */
-    public function storeResult(?string $email, int $milliseconds): Result {
+    public function storeResult(?string $email, int $milliseconds): Model {
+
         $member = null;
 
         // Поиск или создание участника, если предоставлен email
@@ -77,7 +79,7 @@ class ResultService {
             ];
         } catch (\Exception $e) {
 
-            \Log::error("Error fetching user's best result: " . $e->getMessage());
+            Log::error("Error fetching user's best result: " . $e->getMessage());
 
             throw $e;
         }
