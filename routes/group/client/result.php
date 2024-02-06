@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\Result\StoreController;
+use App\Http\Controllers\Result\TopListController;
+use Illuminate\Support\Facades\Route;
+
 Route::prefix('results')->group(function () {
-    Route::post('/', \App\Http\Controllers\Result\StoreController::class);
-    Route::get('top', \App\Http\Controllers\Result\TopListController::class);
+    Route::post('/', StoreController::class);
+    Route::get('top', TopListController::class);
 });

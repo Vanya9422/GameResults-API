@@ -73,6 +73,7 @@ class ResultService {
 
             // Возвращение информации о лучшем результате пользователя
             return [
+                'id' => $bestResult->id,
                 'email' => $bestResult->email,  // Email пользователя
                 'place' => $this->resultRepository->getPlaceByMilliseconds($bestResult->milliseconds), // Позиция
                 'milliseconds' => $bestResult->milliseconds, // Время прохождения в мс

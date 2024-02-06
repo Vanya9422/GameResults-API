@@ -17,4 +17,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-include_once "group/client/result.php";
+include base_path('routes/group/client/result.php');
