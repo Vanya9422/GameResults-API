@@ -1,0 +1,313 @@
+{
+	"info": {
+		"_postman_id": "8e2ca613-a3b1-4100-ab96-c5c280cd2ac1",
+		"name": "GameResults",
+		"description": "# Результаты игры (Game Results)\n\nЭта папка содержит запросы API, связанные с записью и получением результатов игр пользователей.  \nВы можете сохранять новые результаты или получать существующие.\n\n## Запросы:\n\n- POST /results: Записывает результат игры. Принимает параметры `email` и `milliseconds`.\n- GET /results/top: Возвращает топ-10 результатов игроков.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7696642",
+		"_collection_link": "https://universal-shadow-129551.postman.co/workspace/d38db024-8d0d-452e-847f-0c3eebf55ccc/collection/7696642-8e2ca613-a3b1-4100-ab96-c5c280cd2ac1?action=share&source=collection_link&creator=7696642"
+	},
+	"item": [
+		{
+			"name": "Result",
+			"item": [
+				{
+					"name": "Сохранение Результата Игры",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "example@gmail.com",
+									"description": "Не Обязательно",
+									"type": "text"
+								},
+								{
+									"key": "milliseconds",
+									"value": "1500",
+									"description": "Обязательно",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/results",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"results"
+							]
+						},
+						"description": "Этот эндпоинт принимает время прохождения игры и, если указан, email пользователя. В случае успешного сохранения возвращает статус 200 вместе с обектом\n\n**Параметры запросА**\n\n- `email` (необязательный): Email пользователя, для которого сохраняется результат. Если пользователь с таким email отсутствует, он будет создан.\n    \n- `milliseconds` (обязательный): Время прохождения игры в миллисекундах."
+					},
+					"response": [
+						{
+							"name": "Пример ответа при проверке",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "123123",
+											"type": "text"
+										},
+										{
+											"key": "milliseconds",
+											"value": "1500",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/results",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"results"
+									]
+								}
+							},
+							"status": "Unprocessable Content",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 06 Feb 2024 05:00:52 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 06 Feb 2024 05:00:52 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "56"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"The given data was invalid.\",\n    \"errors\": {\n        \"milliseconds\": [\n            \"The milliseconds field is required.\"\n        ],\n        \"email\": [\n            \"The email field must be a valid email address.\"\n        ]\n    }\n}"
+						},
+						{
+							"name": "Пример успешного ответа",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "example@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "milliseconds",
+											"value": "1500",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/results",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"results"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 06 Feb 2024 05:13:10 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 06 Feb 2024 05:13:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 10005,\n        \"member_id\": 105,\n        \"milliseconds\": 1500,\n        \"created_at\": \"2024-02-06T05:13:10.000000Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Получение Топ-10 Результатов Игроков",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/results/top?email=miller.demarcus@example.org",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"results",
+								"top"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "miller.demarcus@example.org"
+								}
+							]
+						},
+						"description": "Этот запрос возвращает список из топ-10 результатов игроков в игре. Результаты сортируются по времени прохождения (в миллисекундах) от наименьшего к наибольшему. Можно также указать `email` пользователя, чтобы получить его лучший результат вместе с местом в общем списке. Если `email` не указан, возвращаются только топ-10 результатов. Результаты, у которых `member_id` равно `null`, не включаются в список."
+					},
+					"response": [
+						{
+							"name": "Пример успешного ответа",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/results/top?email=miller.demarcus@example.org",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"results",
+										"top"
+									],
+									"query": [
+										{
+											"key": "email",
+											"value": "miller.demarcus@example.org"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 06 Feb 2024 09:32:52 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 06 Feb 2024 09:32:52 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"top\": [\n            {\n                \"email\": \"ys******@example.org\",\n                \"place\": 1,\n                \"milliseconds\": 9\n            },\n            {\n                \"email\": \"mi******@example.org\",\n                \"place\": 2,\n                \"milliseconds\": 10\n            },\n            {\n                \"email\": \"ma******@example.org\",\n                \"place\": 3,\n                \"milliseconds\": 1023\n            },\n            {\n                \"email\": \"qn******@example.org\",\n                \"place\": 4,\n                \"milliseconds\": 1027\n            },\n            {\n                \"email\": \"hi******@example.org\",\n                \"place\": 5,\n                \"milliseconds\": 1043\n            },\n            {\n                \"email\": \"ke******@example.org\",\n                \"place\": 6,\n                \"milliseconds\": 1049\n            },\n            {\n                \"email\": \"jo******@example.com\",\n                \"place\": 7,\n                \"milliseconds\": 1053\n            },\n            {\n                \"email\": \"pk******@example.org\",\n                \"place\": 8,\n                \"milliseconds\": 1057\n            },\n            {\n                \"email\": \"pb******@example.com\",\n                \"place\": 9,\n                \"milliseconds\": 1086\n            },\n            {\n                \"email\": \"al******@example.com\",\n                \"place\": 10,\n                \"milliseconds\": 1090\n            }\n        ],\n        \"self\": {\n            \"email\": null,\n            \"place\": 2,\n            \"milliseconds\": 10\n        }\n    }\n}"
+						}
+					]
+				}
+			],
+			"description": "  \n\n**Сохранение результата игры**\n\nЭтот эндпоинт используется для записи времени прохождения игры пользователем. Если email предоставлен, система проверит, существует ли уже пользователь с таким email. Если нет, будет создан новый пользователь. Время прохождения игры указывается в миллисекундах."
+		}
+	]
+}
