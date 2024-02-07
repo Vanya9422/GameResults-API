@@ -1,66 +1,102 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Game Results API
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Введение
+Game Results API – это RESTful веб-сервис для учета результатов игровых сессий. Он позволяет регистрировать результаты, извлекать топ-10 результатов и получать лучший результат конкретного пользователя.
+API обрабатывает информацию о результатах игроков, включая идентификаторы пользователей и их результаты в играх, измеряемые в миллисекундах. Это позволяет создавать записи о результатах, извлекать топ результаты и осуществлять поиск по результатам пользователям.
 
-## About Laravel
+## Технологии и версии
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **PHP**: Используется версия [8.2], обеспечивающая поддержку новейших функций языка и безопасности.
+- **Laravel**: Применяется версия [10], предоставляющая обширные возможности для разработки современных веб-приложений.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Архитектурные особенности
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Game Results API разработан с учетом современных архитектурных принципов и паттернов проектирования для обеспечения высокой гибкости, тестируемости и чистоты кода.
 
-## Learning Laravel
+- **SOLID Principles**: Каждый класс в API следует принципам SOLID, что обеспечивает высокую степень модульности и возможность масштабирования. Принципы SOLID помогают поддерживать и развивать систему с течением времени.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- **Repository Pattern**: Для абстракции и инкапсуляции доступа к данным используется шаблон Repository. Это позволяет легко изменять и тестировать логику взаимодействия с данными, не затрагивая бизнес-логику.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- **Criteria Pattern**: Для построения сложных запросов к базе данных и улучшения читаемости используется Criteria Pattern. Это позволяет динамически составлять запросы, повышая гибкость и поддерживаемость запросов.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **Service Layer**: Логика приложения организована в службы, что упрощает управление бизнес-логикой и делает ее более устойчивой к изменениям в пользовательском интерфейсе или других частях системы.
 
-## Laravel Sponsors
+- **Dependency Injection**: В проекте активно используется внедрение зависимостей для уменьшения сцепленности компонентов и упрощения управления их жизненным циклом.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- **Validation Layer**: Валидация входящих запросов происходит на отдельном слое, что позволяет централизованно обрабатывать ошибки и обеспечивать корректность данных перед их обработкой.
 
-### Premium Partners
+- **Error Handling**: Систематическая обработка ошибок обеспечивает ясность и предсказуемость ответов API, упрощая обнаружение и устранение проблем.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+## Инструменты разработки
 
-## Contributing
+- **PhpStorm**: Мощная интегрированная среда разработки для PHP с расширенной поддержкой Laravel и встроенными инструментами для работы с базами данных и HTTP-клиентом.
+- **OpenAPI Specification**: Спецификация, используемая для описания структуры и возможностей RESTful API, что упрощает процесс документирования и создания клиентов и серверов.
+- **Postman Collection**: Набор предварительно составленных запросов для Postman, который облегчает процесс тестирования API путем предоставления готовых к использованию примеров запросов и ответов.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Postman Collection
 
-## Code of Conduct
+Для удобства тестирования и взаимодействия с API, в репозиторий включена Postman Collection. Эта коллекция содержит примеры запросов для каждого эндпоинта API, что позволяет разработчикам быстро начать работу с API без необходимости ручного составления запросов.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Документация API
 
-## Security Vulnerabilities
+Документация для Game Results API предоставлена в формате OpenAPI, который позволяет легко генерировать и просматривать интерактивную документацию. Вы можете использовать различные инструменты, такие как Swagger Editor, для просмотра и взаимодействия с API на основе файла спецификации OpenAPI.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Примеры использования API и дополнительные инструкции по запросам предоставляются в виде коллекции Postman, которая включает предварительно настроенные запросы и примеры ответов. ``GameResults.postman_collection.json``
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Установка и запуск проекта
+
+Проект можно клонировать и запустить локально, следуя этим шагам:
+
+1. Клонируйте репозиторий:
+
+    ```
+    git clone https://github.com/Vanya9422/GameResults-API.git
+    cd GameResults-API
+    ```
+
+2. Установите зависимости с помощью Composer:
+
+    ```
+    composer install
+    ```
+
+3. Настройте файл окружения `.env`, используя пример `.env.example`:
+
+    ```
+    cp .env.example .env
+    ```
+
+   Затем настройте параметры подключения к базе данных в файле `.env`.
+
+4. Сгенерируйте ключ приложения:
+
+    ```
+    php artisan key:generate
+    ```
+
+5. Запустите миграции для настройки базы данных:
+
+    ```
+    php artisan migrate --seed
+    ```
+
+6. Запустите локальный сервер разработки:
+
+    ```
+    php artisan serve
+    ```
+
+   Теперь вы можете обращаться к API по адресу `http://localhost:8000`.
+
+## Тестирование
+
+Для запуска тестов используйте PHPUnit:
+``php artisan test``
+
+Используйте PHPStan для статического анализа кода:
+``vendor/bin/phpstan analyse --level=5``
+
+## Контактная Информация
+
+Если у вас возникнут вопросы или понадобится помощь, обращайтесь к [Вани](https://t.me/grigoryan366).
