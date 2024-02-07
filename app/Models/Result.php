@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 /**
  * @property int $id
  * @property int $milliseconds
- * @property string $email
+ * @property Member $member
  */
 class Result extends Model {
 

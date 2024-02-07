@@ -45,6 +45,7 @@ class ResultRepository extends BaseRepository implements ResultRepositoryInterfa
         return $this->startQuery()->whereHas('member', function ($query) use ($email) {
             $query->where('email', $email);
         })
+            ->with('member')
             ->orderBy('milliseconds')
             ->first();
     }

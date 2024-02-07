@@ -4,7 +4,6 @@ namespace Tests\Feature;
 
 use App\Models\Member;
 use App\Models\Result;
-use App\Models\User;
 use App\Service\ResultService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
